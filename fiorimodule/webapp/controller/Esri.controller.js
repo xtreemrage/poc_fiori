@@ -18,6 +18,8 @@ sap.ui.define([
 
             loadMap: function () {
                 
+                this.byId("esriCardId").setBusy(true);
+                
                 sap.ui.require(["nl/gasunie/poc/fiorimodule/esri/EsriControl"], (oEsriControl) => {
 
                     this.oEsriControl = new oEsriControl({
@@ -42,13 +44,16 @@ sap.ui.define([
             },
             handleAfterLoadingEsri: function () {
                 console.error("ESRI instance loaded")
+                this.byId("esriCardId").setBusy(false);
             },
             handleErrorLoadingEsri: function (oEvent) {
                 console.error("ESRI instance failed");
                 console.error(oEvent);
+                this.byId("esriCardId").setBusy(false);
             },
             handleUnexpectedFailureEsri: function () {
-                console.error("ESRI instance failed hard")
+                console.error("ESRI instance failed hard");
+                this.byId("esriCardId").setBusy(false);
             },
 
             handleTask: async function(sChannel, sEvent, oTask){

@@ -4,10 +4,10 @@
 	xmlns:commons="sap.suite.ui.commons" xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:core="sap.ui.core"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card class="sapUiMediumMargin" width="100%">
+	<f:Card id="measureCardId" class="sapUiMediumMargin" width="100%">
         <f:header>
-            <card:Header
-                    title="Meetwaarde registratie"
+            <card:Header id="measureHeaderCardId"
+                    title="Meetwaarden"
                     iconSrc="sap-icon://performance" />
         </f:header>
         <f:content>
@@ -19,9 +19,9 @@
                     contentChange="attachContentChange">
 
                     <commons:dimensionSelectors>
-                        <Combobox id="MeasurePoint" items="{measure>MeasurePoints}" selectedItem="handleMeasurePoint">
+                        <ComboBox id="MeasurePoint" items="{measure>MeasurePoints}" change="handleMeasurePoint">
                             <core:Item key="{measure>MeasurePointId}" text="{measure>MeasurePointDescription}" />
-                        </Combobox>
+                        </ComboBox>
                         <Select id="MeasureDocumentsChartSelect" change="setChartType">
                             <core:Item key="column" text="Kolommen" />
                             <core:Item key="line" text="Lijn" />

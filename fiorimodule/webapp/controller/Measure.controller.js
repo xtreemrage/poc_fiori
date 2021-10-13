@@ -1,11 +1,12 @@
 sap.ui.define([
 		"sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+        "sap/ui/model/json/JSONModel",
+        "nl/gasunie/poc/fiorimodule/helper/EventBusUtil",
 	],
 	/**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-	function (Controller, oJSONModel) {
+	function (Controller, oJSONModel, oEventBusUtil) {
 		"use strict";
 
 		return Controller.extend("nl.gasunie.poc.fiorimodule.controller.Measure", {
@@ -23,32 +24,57 @@ sap.ui.define([
             },
 
             handleTask: async function(sChannel, sEvent, oTask){
-                const aFpl = oTask.FunctionalLocationId.split("-")
-                const sLocation = [aFpl[0],aFpl[1]].join("-");
-                this.getView().bindElement("measure>/FunctionalLocationSearches('" + this._sFunctionLocationId + "')");   
+                this.byId("measureCardId").setBusy(true);
+                this.getView().bindElement("measure>/FunctionalLocationSearches('" + oTask.FunctionalLocationId + "')");  
+                
+                this.byId("measureHeaderCardId").setTitle(`Meetwaarden voor ${oTask.FunctionalLocationId}`)
+
+                
+                const oModel = this.getOwnerComponent().getModel("measure");
+                const sUrl = "/FunctionalLocationSearches('" + oTask.FunctionalLocationId + "')/MeasurePoints";
+                oModel.read(sUrl, {
+                    success: (oData) => {
+                        if(oData?.results?.length > 0){
+                            const sMeasurePointId = oData.results[0].MeasurePointId; 
+                            this.byId("MeasurePoint").setSelectedKey(sMeasurePointId);
+                            this.byId("MeasurePoint").fireChange({ value: sMeasurePointId });
+                        }else{
+                            this.byId("MeasurePoint").clearSelection();
+                            this._oJsonData.MeasureDocuments = [];
+                            this._oJsonModel.updateBindings();
+                            this.initMeasureDocumentsChart();
+                            
+                            this.byId("measureCardId").setBusy(false);
+                        }
+                    },
+                    error: (oError) => {
+                        console.error(oError)
+                        this.byId("measureCardId").setBusy(false);
+                    }
+                })
+
+
             },
 
             handleMeasurePoint: function(oEvent){
+                this.byId("measureCardId").setBusy(true);
                 const sMeasurePoint = oEvent.getSource().getSelectedKey();
                 const oModel = this.getOwnerComponent().getModel("measure");
-                const sUrl = "/MeasurePoints('1317540')/MeasureDocuments";
+                const sUrl = "/MeasurePoints('"+sMeasurePoint+"')/MeasureDocuments";
                 oModel.read(sUrl, {
                     success: (oData) => {
                         this._oJsonData.MeasureDocuments = oData.results;
                         this.initMeasureDocumentsChart();
+                        this.byId("measureCardId").setBusy(false);
                     },
                     error: (oError) => {
-                        debugger;
+                        console.error(oError)
+                        this.byId("measureCardId").setBusy(false);
                     }
                 })
-
             },
 
             initMeasureDocumentsChart: function (oData) {
-                // Get dimension
-                var dimensionSelect = this.getView().byId("MeasureDocumentsDimensionSelect");
-                var dimension = dimensionSelect.getSelectedKey();
-
                 // Sort data based on measuredocument ID
                 var sortData = JSON.parse(JSON.stringify(this._oJsonData.MeasureDocuments)); // Copy data
                 sortData.sort(function (oValue1, oValue2) {
@@ -75,7 +101,7 @@ sap.ui.define([
                 });
 
                 // Set data into model
-                this._oJsonData.MeasureDocumentsChart = (dimension === "ALL") ? sortData : sortData.slice(-parseInt(dimension));
+                this._oJsonData.MeasureDocumentsChart = sortData;
 
                 // Set min counter value
                 // var isCounter = this.getView().getModel("odata").getProperty("/MeasurePoints('1317540')").CounterIndicator;
@@ -92,6 +118,7 @@ sap.ui.define([
                         text: "Meetwaarden",
                     }
                 });
+                this.byId("measureCardId").setBusy(false);
             },
 
             _initChart : function() {            
