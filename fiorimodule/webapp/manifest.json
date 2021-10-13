@@ -23,6 +23,14 @@
                     "odataVersion": "2.0",
                     "localUri": "localService/metadata.xml"
                 }
+            },            
+            "measure": {
+                "uri": "/sap/opu/odata/sap/MEASURE_REGISTRATION_SERVICE/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
             }
         }
 	},
@@ -82,7 +90,16 @@
                 "settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "TwoWay",
-                    "defaultCountMode": "Request"
+                    "defaultCountMode": "None"
+                }
+            },
+            "measure": {
+                "dataSource": "measure",
+                "preload": true,
+                "settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "None"
                 }
             }
 		},

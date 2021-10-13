@@ -23,12 +23,20 @@
                             </l:Grid>
                             <l:Grid>
 		                        <l:content>
-                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Measure"/> 
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Measure">
+                                        <mvc:layoutData>
+                                            <l:GridData span="L12 M12 S12"  />
+                                        </mvc:layoutData>
+                                    </mvc:XMLView>     
 		                        </l:content>
                             </l:Grid>
                             <l:Grid>
 		                        <l:content>
-                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote"/>  
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote">
+                                        <mvc:layoutData>
+                                            <l:GridData span="L12 M12 S12"  />
+                                        </mvc:layoutData>
+                                    </mvc:XMLView>       
 		                        </l:content> 
                             </l:Grid>
                         </l:VerticalLayout>

@@ -1,17 +1,113 @@
 <mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.Measure" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
     xmlns="sap.m" 
 	xmlns:card="sap.f.cards"
-	xmlns:l="sap.ui.layout"
+	xmlns:commons="sap.suite.ui.commons" xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:core="sap.ui.core"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card class="sapUiMediumMargin" width="300px">
+	<f:Card class="sapUiMediumMargin" width="100%">
         <f:header>
             <card:Header
                     title="Meetwaarde registratie"
                     iconSrc="sap-icon://performance" />
         </f:header>
         <f:content>
-        
+            <VBox id="layout" width="100%" height="500px" class="fullHeightVbox" >
+                <commons:ChartContainer id="ChartContainer"
+                    showFullScreen="{= ${device>/system/tablet} || ${device>/system/desktop} }"
+                    showPersonalization="false" autoAdjustHeight="true" showLegend="false"
+                    showLegendButton="false" personalizationPress="attachPersonalizationPress"
+                    contentChange="attachContentChange">
+
+                    <commons:dimensionSelectors>
+                        <Combobox id="MeasurePoint" items="{measure>MeasurePoints}" selectedItem="handleMeasurePoint">
+                            <core:Item key="{measure>MeasurePointId}" text="{measure>MeasurePointDescription}" />
+                        </Combobox>
+                        <Select id="MeasureDocumentsChartSelect" change="setChartType">
+                            <core:Item key="column" text="Kolommen" />
+                            <core:Item key="line" text="Lijn" />
+                        </Select>
+                    </commons:dimensionSelectors>
+
+                    <commons:content>
+
+                        <commons:ChartContainerContent id="ChartContainerContentChart"
+                            icon="sap-icon://vertical-bar-chart" title="Grafiek">
+                            <commons:content>
+                                <!-- NOT USED:<viz:Popover id="MeasureVizPopover"></viz:Popover> -->
+                                <viz:VizFrame id="MeasureVizFrame" height="100%"
+                                    width="100%" uiConfig="{applicationSet:'fiori'}">
+                                </viz:VizFrame>
+                            </commons:content>
+                        </commons:ChartContainerContent>
+
+                        <commons:ChartContainerContent id="ChartContainerContentTable"
+                            icon="sap-icon://table-chart" title="Gegevens (tabel)">
+                            <commons:content>
+
+                                <Table id="MeasureVizFrameTable"
+                                    items="{ 
+                                        path:'local>/MeasureRegistration/MeasureDocumentsChart', 
+                                        sorter: { path: 'IdSort', descending: true } 
+                                    }"
+                                    mode="None">
+                                    <columns>
+
+                                        <Column>
+                                            <header>
+                                                <Label text="Meetdatum" />
+                                            </header>
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <header>
+                                                <Label text="Tijd" />
+                                            </header>
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <header>
+                                                <Label text="Opnemer" />
+                                            </header>
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="false">
+                                            <header>
+                                                <Label text="Ordernummer" />
+                                            </header>
+                                        </Column>
+                                        <Column width="25%" minScreenWidth="Tablet" demandPopin="true">
+                                            <header>
+                                                <Label text="Omschrijving" />
+                                            </header>
+                                        </Column>
+                                        <Column hAlign="Right">
+                                            <header>
+                                                <Label text="Meetwaarde" />
+                                            </header>
+                                        </Column>
+                                    </columns>
+
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text
+                                                    text="{local>MeasureDate}" />
+                                                <Text
+                                                    text="{local>MeasureTime}" />
+                                                <Text text="{local>Reader}" />
+                                                <Text
+                                                    text="{local>OrderNumber}" />
+                                                <Text text="{local>Description}" />
+                                                <Text text="{local>Value} {local>ValueProps/UnitDescription} " />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+
+
+
+                                </commons:content>
+                            </commons:ChartContainerContent>
+                        </commons:content>
+                    </commons:ChartContainer>
+            </VBox>
         </f:content>
     </f:Card>  
 </mvc:View>
