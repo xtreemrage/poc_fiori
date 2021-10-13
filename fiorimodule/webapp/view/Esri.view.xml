@@ -1,5 +1,6 @@
 <mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.Esri" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
     xmlns="sap.m" 
+	xmlns:card="sap.f.cards"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
