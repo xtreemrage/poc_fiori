@@ -101,7 +101,7 @@ sap.ui.define([
                 });
 
                 // Set data into model
-            this._oJsonData.MeasureDocumentsChart = sortData.slice(-parseInt(dimension));
+                this._oJsonData.MeasureDocumentsChart = sortData.slice(-15);
 
                 // Set min counter value
                 // var isCounter = this.getView().getModel("odata").getProperty("/MeasurePoints('1317540')").CounterIndicator;
