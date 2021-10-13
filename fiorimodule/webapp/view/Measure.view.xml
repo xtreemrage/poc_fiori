@@ -1,13 +1,16 @@
-<mvc:View
-   controllerName="nl.gasunie.poc.fiorimodule.controller.Measure"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
-   <Panel
-      headerText="{i18n>helloPanelTitle}"
-      class="sapUiResponsiveMargin"
-      width="auto" >
-      <content>
-         <Label text="Tasklist" />
-      </content>
-   </Panel>
+<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.Measure" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+    xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:w="sap.ui.integration.widgets">
+	<f:Card class="sapUiMediumMargin" width="300px">
+        <f:header>
+            <card:Header
+                    title="Meetwaarde registratie"
+                    iconSrc="sap-icon://performance" />
+        </f:header>
+        <f:content>
+        
+        </f:content>
+    </f:Card>  
 </mvc:View>

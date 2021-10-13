@@ -1,4 +1,4 @@
-<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.Shiftnote" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.Esri" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
     xmlns="sap.m" 
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
@@ -6,8 +6,8 @@
 	<f:Card class="sapUiMediumMargin" width="300px">
         <f:header>
             <card:Header
-                    title="Wachtnotities"
-                    iconSrc="sap-icon://activity-2" />
+                    title="ESRI kaart"
+                    iconSrc="sap-icon://map-2" />
         </f:header>
         <f:content>
         

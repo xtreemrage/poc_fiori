@@ -1,9 +1,38 @@
-<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:w="sap.ui.integration.widgets">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content></content>
+				<Page id="page" title="SAP Workzone">
+					<content>
+                        <l:VerticalLayout width="100%">
+                            <l:BlockLayout>
+                            
+                                <l:BlockLayoutRow accentCells="Accent1">
+                                    <l:BlockLayoutCell>   
+                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Tasklist"/>                              
+                                    </l:BlockLayoutCell>
+                                    <l:BlockLayoutCell>
+                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Esri"/>                                        
+                                    </l:BlockLayoutCell>
+                                </l:BlockLayoutRow>
+                                
+                                <l:BlockLayoutRow accentCells="Accent1">
+                                    <l:BlockLayoutCell>
+                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Measure"/>                                      
+                                    </l:BlockLayoutCell>
+                                </l:BlockLayoutRow>
+                                
+                                <l:BlockLayoutRow accentCells="Accent1">
+                                    <l:BlockLayoutCell>
+                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote"/>                                
+                                    </l:BlockLayoutCell>
+                                </l:BlockLayoutRow>
+                            </l:BlockLayout>
+                        </l:VerticalLayout>                    
+                    </content>
 				</Page>
 			</pages>
 		</App>
