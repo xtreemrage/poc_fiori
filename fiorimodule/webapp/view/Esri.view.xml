@@ -11,7 +11,7 @@
                     iconSrc="sap-icon://map-2" />
         </f:header>
         <f:content>
-            <VBox id="layout" width="100%" height="450px" class="fullHeightVbox" />
+            <VBox id="layout" width="100%" height="520px" class="fullHeightVbox" />
         
         </f:content>
     </f:Card>  
