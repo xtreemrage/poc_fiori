@@ -4,9 +4,9 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card class="sapUiMediumMargin" width="300px">
+	<f:Card id="shiftnoteCardId" class="sapUiMediumMargin" width="300px">
         <f:header>
-            <card:Header
+            <card:Header id="shiftnoteHeaderCardId"
                     title="Wachtnotities"
                     iconSrc="sap-icon://activity-2" />
         </f:header>
