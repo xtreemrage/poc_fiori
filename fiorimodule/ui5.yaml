@@ -1,0 +1,26 @@
+specVersion: "2.4"
+metadata:
+  name: nl.gasunie.poc.fiorimodule
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://sapngo.hec.gasunie.nl:443
+            client: "001"
+            destination: sapngo
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: ""
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp

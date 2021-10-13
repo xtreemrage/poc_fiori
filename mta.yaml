@@ -1,0 +1,84 @@
+_schema-version: "3.2"
+ID: poc_fiori
+version: 0.0.1
+modules:
+- name: poc_fiori-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: poc_fiori-destination-service
+    parameters:
+      content-target: true
+  - name: poc_fiori_html_repo_host
+    parameters:
+      service-key:
+        name: poc_fiori_html_repo_host-key
+  - name: uaa_poc_fiori
+    parameters:
+      service-key:
+        name: uaa_poc_fiori-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: pocfiori_poc_fiori_html_repo_host
+          ServiceInstanceName: poc_fiori-html5-app-host-service
+          ServiceKeyName: poc_fiori_html_repo_host-key
+          sap.cloud.service: pocfiori
+        - Authentication: OAuth2UserTokenExchange
+          Name: pocfiori_uaa_poc_fiori
+          ServiceInstanceName: poc_fiori-xsuaa-service
+          ServiceKeyName: uaa_poc_fiori-key
+          sap.cloud.service: pocfiori
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: poc_fiori_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: poc_fiori_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - fiorimodule-content.zip
+      name: fiorimodule
+      target-path: resources/
+- name: fiorimodule
+  type: html5
+  path: fiorimodule
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: poc_fiori-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: poc_fiori-destination-service
+    service-plan: lite
+- name: poc_fiori_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: poc_fiori-html5-app-host-service
+    service-plan: app-host
+- name: uaa_poc_fiori
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: poc_fiori-xsuaa-service
+    service-plan: application
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install

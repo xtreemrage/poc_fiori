@@ -1,0 +1,33 @@
+specVersion: "2.4"
+metadata:
+  name: nl.gasunie.poc.fiorimodule
+type: application
+framework:
+  name: SAPUI5
+  version: 1.95.0
+  libraries:
+    - name: sap.ui.core
+    - name: sap.m
+    - name: sap.ui.layout
+    - name: sap.f
+    - name: sap.ui.comp
+    - name: sap.ui.generic.app
+    - name: sap.ui.table
+    - name: sap.ushell
+    - name: themelib_sap_fiori_3
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        backend:
+          - path: /sap
+            url: http://sapngo.hec.gasunie.nl:443
+            client: "001"
+            destination: sapngo
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
