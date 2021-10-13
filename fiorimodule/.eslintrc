@@ -1,4 +1,17 @@
 {
-  "plugins": ["@sap/ui5-jsdocs"],
-  "extends": ["plugin:@sap/ui5-jsdocs/recommended", "eslint:recommended"]
+  "env": {
+      "browser": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 2020
+  },
+  "globals": {
+      "sap": "readonly",
+      "QUnit": "readonly",
+      "sinon": "readonly",
+      "$": "readonly"
+  },
+  "rules": {
+      "no-console": "error"
+  }
 }

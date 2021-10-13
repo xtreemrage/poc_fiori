@@ -12,19 +12,19 @@
                     iconSrc="sap-icon://activity-individual" />
         </f:header>
         <f:content>
-            <List items="{taskList>/Tasks}" >
+            <List id="tasklistId" items="{taskList>/Tasks}" itemPress="onSelectTasks">
                 <headerToolbar>
                     <OverflowToolbar>
                         <ToolbarSpacer />
-                        <Select>
+                        <ComboBox change="onFilterTasklist">
                             <core:Item key="1" text="Heet" />
                             <core:Item key="2" text="Warm" />
                             <core:Item key="3" text="Koud" />
-                        </Select>
+                        </ComboBox>
                     </OverflowToolbar>
                 </headerToolbar>
                 <items>
-                    <StandardListItem
+                    <StandardListItem type="Active"
                         title="{taskList>TaskDescription}"
                         description="{taskList>FunctionalLocationId} {taskList>FunctionalLocationDescription}"
                         highlight="{= ${taskList>HWK} === '1' ? 'Error' : ${taskList>HWK} === '2' ? 'Warning' : ${taskList>HWK} === '3' ? 'Success' : 'None' }"

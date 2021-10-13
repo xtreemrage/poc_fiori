@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"nl/gasunie/poc/fiorimodule/model/models"
-], function (UIComponent, Device, models) {
+	"nl/gasunie/poc/fiorimodule/model/models",
+    "nl/gasunie/poc/fiorimodule/esri/EsriLibraries"
+], function (UIComponent, Device, models, oEsriLibraries) {
 	"use strict";
 
 	return UIComponent.extend("nl.gasunie.poc.fiorimodule.Component", {
@@ -24,7 +25,9 @@ sap.ui.define([
 			this.getRouter().initialize();
 
 			// set the device model
-			this.setModel(models.createDeviceModel(), "device");
+            this.setModel(models.createDeviceModel(), "device");
+            
+            oEsriLibraries.initialize(this);
 		}
 	});
 });

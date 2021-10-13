@@ -1,1 +1,7 @@
-/* Enter your custom styles here */
+.fullHeight{
+    height : 500px !important;
+}
+
+.fullHeightVbox .sapMFlexItem{
+    height : 100% !important;
+}

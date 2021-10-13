@@ -1,0 +1,43 @@
+
+
+.guEsriDiv { width: 100%; height: 100%; position: relative; }
+.guEsriMap { width: 100%; height: 100%; padding: 0; }
+.guEsriMap .esriAttribution{ display: none !important; } 
+
+.guEsriDialogFullHeight .sapMDialogScroll,
+.guEsriDialogFullHeight .sapMDialogScrollCont{
+	height:100% !important;
+}
+
+.guEsriMeasureButtonGroup {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background-color: white;
+    padding: 5px;
+}
+.guEsriMeasureButton{
+    margin: 2px !important; 
+    border-width: 1px !important;
+}
+.esri-widget--button.active,
+.esri-widget--button.active:hover,
+.esri-widget--button.active:focus {
+cursor: default;
+background-color: #dcdcdc;
+}
+.esri-widget--button.active path,
+.esri-widget--button.active:hover path,
+.esri-widget--button.active:focus path {
+fill: #E4E4E4;
+}
+
+/* Sketch widget doesn't support disable delete button, that's why using styleclass */
+.guEsriDisableDrawDeleteButton .esri-icon-trash{
+    display: none !important;
+}
+
