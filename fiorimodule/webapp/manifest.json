@@ -1,19 +1,19 @@
 {
-	"_version": "1.12.0",
-	"sap.app": {
-		"id": "nl.gasunie.poc.fiorimodule",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"applicationVersion": {
-			"version": "1.0.0"
-		},
-		"title": "Custom Workzone",
-		"description": "Custom Workzone",
-		"resources": "resources.json",
-		"ach": "ach",
-		"sourceTemplate": {
-			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
-			"version": "1.40.12"
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "nl.gasunie.poc.fiorimodule",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "Custom Workzone",
+        "description": "Custom Workzone",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+            "version": "1.40.12"
         },
         "dataSources": {
             "taskList": {
@@ -23,7 +23,7 @@
                     "odataVersion": "2.0",
                     "localUri": "localService/metadata.xml"
                 }
-            },            
+            },
             "measure": {
                 "uri": "/sap/opu/odata/sap/MEASURE_REGISTRATION_SERVICE/",
                 "type": "OData",
@@ -41,63 +41,60 @@
                 }
             }
         }
-	},
-	
-	"sap.cloud": {
-		"public": true,
-		"service": "pocfiori"
-	},
-	
-	"sap.ui": {
-		"technology": "UI5",
-		"icons": {
-			"icon": "",
-			"favIcon": "",
-			"phone": "",
-			"phone@2": "",
-			"tablet": "",
-			"tablet@2": ""
-		},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
-	},
-
-	"sap.ui5": {
-		"flexEnabled": false,
-		"rootView": {
-			"viewName": "nl.gasunie.poc.fiorimodule.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "App"
-		},
-		"dependencies": {
-			"minUI5Version": "1.60.1",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.m": {},
-				"sap.ui.layout": {}
-			}
-		},
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "nl.gasunie.poc.fiorimodule.i18n.i18n"
-				}
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "pocfiori"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "nl.gasunie.poc.fiorimodule.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.1",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "nl.gasunie.poc.fiorimodule.i18n.i18n"
+                }
             },
             "taskList": {
                 "dataSource": "taskList",
                 "preload": true,
                 "settings": {
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "TwoWay",
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "None"
                 }
             },
@@ -105,8 +102,8 @@
                 "dataSource": "measure",
                 "preload": true,
                 "settings": {
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "TwoWay",
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "None"
                 }
             },
@@ -114,41 +111,47 @@
                 "dataSource": "shiftNote",
                 "preload": true,
                 "settings": {
-					"defaultOperationMode": "Server",
-					"defaultBindingMode": "TwoWay",
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "None"
                 }
             }
-		},
-		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
-		},
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"async": true,
-				"viewPath": "nl.gasunie.poc.fiorimodule.view",
-				"controlAggregation": "pages",
-				"controlId": "app",
-				"clearControlAggregation": false
-			},
-			"routes": [{
-				"name": "RouteApp",
-				"pattern": "RouteApp",
-				"target": ["TargetApp"]
-			}],
-			"targets": {
-				"TargetApp": {
-					"viewType": "XML",
-					"transition": "slide",
-					"clearControlAggregation": false,
-					"viewId": "App",
-					"viewName": "App"
-				}
-			}
-		}
-	}
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "nl.gasunie.poc.fiorimodule.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteApp",
+                    "pattern": "RouteApp",
+                    "target": [
+                        "TargetApp"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "App",
+                    "viewName": "App"
+                }
+            }
+        }
+    }
 }

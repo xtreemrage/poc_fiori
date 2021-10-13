@@ -43,16 +43,18 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - fiorimodule-content.zip
-      name: fiorimodule
+      - nlgasuniepocfiorimodule.zip
+      name: nlgasuniepocfiorimodule
       target-path: resources/
-- name: fiorimodule
+- name: nlgasuniepocfiorimodule
   type: html5
   path: fiorimodule
   build-parameters:
+    build-result: dist
     builder: custom
     commands:
-    - npm run build
+    - npm install
+    - npm run build:cf
     supported-platforms: []
 resources:
 - name: poc_fiori-destination-service
@@ -60,6 +62,15 @@ resources:
   parameters:
     config:
       HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
       version: 1.0.0
     service: destination
     service-name: poc_fiori-destination-service
@@ -77,6 +88,8 @@ resources:
     service: xsuaa
     service-name: poc_fiori-xsuaa-service
     service-plan: application
+parameters:
+  deploy_mode: html5-repo
 build-parameters:
   before-all:
   - builder: custom
