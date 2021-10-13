@@ -14,7 +14,17 @@
 		"sourceTemplate": {
 			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
 			"version": "1.40.12"
-		}
+        },
+        "dataSources": {
+            "taskList": {
+                "uri": "/sap/opu/odata/sap/ZI_TECH_TASKLIST_SERVICE/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
 	},
 	
 	"sap.cloud": {
@@ -65,7 +75,16 @@
 				"settings": {
 					"bundleName": "nl.gasunie.poc.fiorimodule.i18n.i18n"
 				}
-			}
+            },
+            "taskList": {
+                "dataSource": "taskList",
+                "preload": true,
+                "settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
+                }
+            }
 		},
 		"resources": {
 			"css": [{
