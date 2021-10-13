@@ -7,8 +7,8 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
+		"title": "Custom Workzone",
+		"description": "Custom Workzone",
 		"resources": "resources.json",
 		"ach": "ach",
 		"sourceTemplate": {

@@ -3,7 +3,7 @@
 	<Shell>
 		<App>
 			<pages>
-				<Page title="SAP Workzone">
+				<Page title="Custom Workzone">
 					<content>
                         <l:VerticalLayout width="100%">
                             <l:BlockLayout>

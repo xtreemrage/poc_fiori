@@ -3,6 +3,7 @@
 	xmlns:card="sap.f.cards"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
 	xmlns:w="sap.ui.integration.widgets">
 	<f:Card class="sapUiMediumMargin" width="300px">
         <f:header>
@@ -11,7 +12,25 @@
                     iconSrc="sap-icon://activity-individual" />
         </f:header>
         <f:content>
-        
+            <List items="{taskList>/Tasks}" >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <ToolbarSpacer />
+                        <Select>
+                            <core:Item key="1" text="Heet" />
+                            <core:Item key="2" text="Warm" />
+                            <core:Item key="3" text="Koud" />
+                        </Select>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <items>
+                    <StandardListItem
+                        title="{taskList>TaskDescription}"
+                        description="{taskList>FunctionalLocationId} {taskList>FunctionalLocationDescription}"
+                        highlight="{= ${taskList>HWK} === '1' ? 'Error' : ${taskList>HWK} === '2' ? 'Warning' : ${taskList>HWK} === '3' ? 'Success' : 'None' }"
+                        info="{taskList>OrderNumber}"/>
+                </items>
+            </List>
         </f:content>
     </f:Card>  
 </mvc:View>
