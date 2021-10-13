@@ -4,7 +4,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card class="sapUiMediumMargin" width="600px">
+	<f:Card class="sapUiMediumMargin" width="100%">
         <f:header>
             <card:Header
                     title="ESRI kaart"

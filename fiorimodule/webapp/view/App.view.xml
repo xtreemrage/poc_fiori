@@ -5,31 +5,33 @@
 			<pages>
 				<Page title="Custom Workzone">
 					<content>
-                        <l:VerticalLayout width="100%">
-                            <l:BlockLayout>
-                            
-                                <l:BlockLayoutRow accentCells="Accent1">
-                                    <l:BlockLayoutCell>   
-                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Tasklist"/>                              
-                                    </l:BlockLayoutCell>
-                                    <l:BlockLayoutCell>
-                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Esri"/>                                        
-                                    </l:BlockLayoutCell>
-                                </l:BlockLayoutRow>
-                                
-                                <l:BlockLayoutRow accentCells="Accent1">
-                                    <l:BlockLayoutCell>
-                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Measure"/>                                      
-                                    </l:BlockLayoutCell>
-                                </l:BlockLayoutRow>
-                                
-                                <l:BlockLayoutRow accentCells="Accent1">
-                                    <l:BlockLayoutCell>
-                                        <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote"/>                                
-                                    </l:BlockLayoutCell>
-                                </l:BlockLayoutRow>
-                            </l:BlockLayout>
-                        </l:VerticalLayout>                    
+
+                        <l:VerticalLayout width="95%" class="sapUiNoContentPadding">
+                            <l:Grid >
+		                        <l:content>
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Tasklist">
+                                        <mvc:layoutData>
+                                            <l:GridData span="L3 M5 S12"  />
+                                        </mvc:layoutData>
+                                    </mvc:XMLView>       
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Esri">
+                                        <mvc:layoutData>
+                                            <l:GridData span="L9 M7 S12"  />
+                                        </mvc:layoutData>
+                                    </mvc:XMLView>      
+		                        </l:content>
+                            </l:Grid>
+                            <l:Grid>
+		                        <l:content>
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Measure"/> 
+		                        </l:content>
+                            </l:Grid>
+                            <l:Grid>
+		                        <l:content>
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote"/>  
+		                        </l:content> 
+                            </l:Grid>
+                        </l:VerticalLayout>
                     </content>
 				</Page>
 			</pages>
