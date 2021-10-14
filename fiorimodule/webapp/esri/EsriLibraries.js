@@ -30,8 +30,9 @@ sap.ui.define([
             const sVersion = "4.20";
 
             oLog.info(`ESRI API JavaScript version ${sVersion} loaded...`);
-
-            loadLibraries(`https://js.arcgis.com/${sVersion}/`);
+            
+            const sEsriLib = sap.ui.require.toUrl("nl/gasunie/poc/fiorimodule/esri/init.js");
+            loadLibraries(sEsriLib);
 
             loadStylesheets([
                 `https://js.arcgis.com/${sVersion}/esri/themes/light/main.css`

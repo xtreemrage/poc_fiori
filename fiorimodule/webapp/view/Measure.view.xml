@@ -4,7 +4,7 @@
 	xmlns:commons="sap.suite.ui.commons" xmlns:l="sap.ui.layout" xmlns:viz="sap.viz.ui5.controls" xmlns:core="sap.ui.core"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card id="measureCardId" class="sapUiMediumMargin" width="100%">
+	<f:Card id="measureCardId" class="sapUiTinyMargin" width="100%">
         <f:header>
             <card:Header id="measureHeaderCardId"
                     title="Meetwaarden"

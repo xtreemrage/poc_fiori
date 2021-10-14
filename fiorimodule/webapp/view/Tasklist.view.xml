@@ -5,7 +5,7 @@
 	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card class="sapUiMediumMargin" width="100%">
+	<f:Card class="sapUiTinyMargin" width="100%">
         <f:header>
             <card:Header
                     title="Mijn takenlijst"

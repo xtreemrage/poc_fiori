@@ -4,14 +4,14 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card id="esriCardId" class="sapUiMediumMargin" width="100%">
+	<f:Card id="esriCardId" class="sapUiTinyMargin" width="100%">
         <f:header>
             <card:Header
                     title="ESRI kaart"
                     iconSrc="sap-icon://map-2" />
         </f:header>
         <f:content>
-            <VBox id="layout" width="100%" height="450px" class="fullHeightVbox" />
+            <VBox id="layout" width="100%" height="520px" class="fullHeightVbox" />
         
         </f:content>
     </f:Card>  
