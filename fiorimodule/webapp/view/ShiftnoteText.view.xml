@@ -1,0 +1,21 @@
+<mvc:View controllerName="nl.gasunie.poc.fiorimodule.controller.ShiftnoteText" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 
+    xmlns="sap.m" 
+	xmlns:card="sap.f.cards"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+	xmlns:w="sap.ui.integration.widgets">
+	<f:Card id="shiftnoteTextCardId" class="sapUiTinyMargin" width="100%">
+        <f:header>
+            <card:Header id="shiftnoteTextHeaderCardId"
+                    title="Wachtnotitie details"
+                    iconSrc="sap-icon://activity-2" />
+        </f:header>
+        <f:content>
+            <VBox id="layout" width="100%" height="500px" class="fullHeightVbox" >
+                <Text id="shiftnoteDetailTextId"
+				    text="Selecteer eerst een wachtnotitie..."
+				    visible="true" class="sapUiTinyMargin"/>          
+            </VBox>
+        </f:content>
+    </f:Card>  
+</mvc:View>

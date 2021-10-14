@@ -4,7 +4,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
 	xmlns:w="sap.ui.integration.widgets">
-	<f:Card id="shiftnoteCardId" class="sapUiTinyMargin" width="300px">
+	<f:Card id="shiftnoteCardId" class="sapUiTinyMargin" width="100%">
         <f:header>
             <card:Header id="shiftnoteHeaderCardId"
                     title="Wachtnotities"

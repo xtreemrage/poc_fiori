@@ -34,7 +34,12 @@
 		                        <l:content>
                                     <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.Shiftnote">
                                         <mvc:layoutData>
-                                            <l:GridData span="L12 M12 S12"  />
+                                            <l:GridData span="L4 M6 S12"  />
+                                        </mvc:layoutData>
+                                    </mvc:XMLView>
+                                    <mvc:XMLView viewName="nl.gasunie.poc.fiorimodule.view.ShiftnoteText">
+                                        <mvc:layoutData>
+                                            <l:GridData span="L8 M6 S12"  />
                                         </mvc:layoutData>
                                     </mvc:XMLView>       
 		                        </l:content> 

@@ -39,6 +39,14 @@
                     "odataVersion": "2.0",
                     "localUri": "localService/metadata.xml"
                 }
+            },
+            "shiftNoteText": {
+                "uri": "/sap/opu/odata/sap/NOTE_LIST_SERVICE/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
             }
         }
     },
@@ -109,6 +117,15 @@
             },
             "shiftNote": {
                 "dataSource": "shiftNote",
+                "preload": true,
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "None"
+                }
+            },
+            "shiftNoteText": {
+                "dataSource": "shiftNoteText",
                 "preload": true,
                 "settings": {
                     "defaultOperationMode": "Server",

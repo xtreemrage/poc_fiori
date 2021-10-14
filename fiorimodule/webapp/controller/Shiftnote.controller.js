@@ -81,8 +81,7 @@ sap.ui.define([
                 var oListItem = oEvent.getParameters().listItem;   
                 var oBc = oListItem.getBindingContext("local");
                 var oContext = oBc.getModel().getProperty(oBc.getPath());
-                
-                var shiftNoteid = oContext.ShiftNoteId;
+                oEventBusUtil.publish("ShiftNote.showShiftnote", this, oContext);
             },      
                             
 		});
