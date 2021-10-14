@@ -11,7 +11,17 @@
                     iconSrc="sap-icon://activity-2" />
         </f:header>
         <f:content>
-        
+            <VBox id="layout" width="100%" height="500px" class="fullHeightVbox" >
+                <List id="shiftnotesListId" items="{local>/ShiftNotes/ShiftNotes}" itemPress="onSelectShiftnote">
+                    <items>
+                        <StandardListItem type="Active"
+                            title="{local>ShiftNoteDescription}"
+                            description="{local>FunctionalLocationId} {local>FunctionalLocationDescription}"
+                            highlight="{= ${local>CategoryId} === '90' ? 'Error' : ${local>CategoryId} === '60' ? 'Warning' : ${local>CategoryId} === '62' ? 'Success' : 'None' }"
+                            info="{local>OrderNumber}"/>
+                    </items>
+                </List>            
+            </VBox>
         </f:content>
     </f:Card>  
 </mvc:View>

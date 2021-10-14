@@ -16,10 +16,8 @@ sap.ui.define([
                 
                 this._oJsonModel = new oJSONModel();
                 this._oJsonData = {};
-                this._oJsonModel.setProperty("/ShiftNote", this._oJsonData);
+                this._oJsonModel.setProperty("/ShiftNotes", this._oJsonData);
                 this.getView().setModel(this._oJsonModel, "local");
-                
-                //this._initList();
                 
             },
             
@@ -30,9 +28,6 @@ sap.ui.define([
 
                 
                 const oModel = this.getOwnerComponent().getModel("shiftNote");
-                //const sUrl = "/ShiftNoteVariants('%2FSTANDAARD')/ShiftNotes?$skip=0&$top=999999&$orderby=ShiftNoteId asc&$filter=substringof('" + oTask.FunctionalLocationId + "',Label) and (StartDate ge '20210701' and StartDate le '20211031')";
-                //const sUrl = "/ShiftNoteVariants('%2FSTANDAARD')/ShiftNotes?$skip=0&$top=999999&$orderby=ShiftNoteId asc&$filter=substringof('S-489-901-HV-121',Label) and (StartDate ge '20210101' and StartDate le '20211013')";
-                //const sUrl = "/ShiftNoteVariants('OLDEBOORN%20JUMP')/ShiftNotes?$skip=0&$top=999999&$orderby=ShiftNoteId asc";
                 const sUrl = "/ShiftNoteVariants('%2FSTANDAARD')/ShiftNotes";
                 const aFilters = [];
 
@@ -60,18 +55,18 @@ sap.ui.define([
                 
                 oModel.read(sUrl, {
                     filters: aFilters,
+                    urlParameters: {
+                        "$skip":0,
+                        "$top":5                                                                
+                    },
                     success: (oData) => {
                         if(oData?.results?.length > 0){
-                            debugger;
-                            // const sMeasurePointId = oData.results[0].MeasurePointId; 
-                            // this.byId("MeasurePoint").setSelectedKey(sMeasurePointId);
-                            // this.byId("MeasurePoint").fireChange({ value: sMeasurePointId });
+                            this._oJsonData.ShiftNotes = oData.results;
+                            this._oJsonModel.updateBindings();
+                            this.byId("shiftnoteCardId").setBusy(false);
                         }else{
-                            // this.byId("MeasurePoint").clearSelection();
-                            // this._oJsonData.MeasureDocuments = [];
-                            // this._oJsonModel.updateBindings();
-                            // this.initMeasureDocumentsChart();
-                            debugger;
+                            this._oJsonData.ShiftNotes = [];
+                            this._oJsonModel.updateBindings();
                             this.byId("shiftnoteCardId").setBusy(false);
                         }
                     },
@@ -81,22 +76,14 @@ sap.ui.define([
                     }
                 }) 
             },
-            
-            handleShiftnotes: function(oEvent){
-                const sFpl = oEvent.getSource().getSelectedKey();
-                const oModel = this.getOwnerComponent().getModel("shiftNote");
-                const sUrl = "/ShiftNoteVariants('/STANDAARD')/ShiftNotes?$skip=0&$top=999999&$orderby=ShiftNoteId%20asc&$filter=substringof('" + this._sFunctionLocationId + "',Label)%20and%20(StartDate%20ge%20%2720210701%27%20and%20StartDate%20le%20%2720211031%27)&$select=ShiftNoteId%2cShiftNoteDescription%2cCreatedBy%2cFunctionalLocationId%2cFunctionalLocationDescription%2cEquipmentId%2cEquipmentDescription%2cCategoryId%2cCategoryDescription%2cStartDate%2cStartTime%2cEndDate%2cEndTime%2cNotificationNumber%2cOrderNumber%2cCreationDate%2cChangeDate";
-                oModel.read(sUrl, {
-                    success: (oData) => {
-                        this._oJsonData.ShiftNotes = oData.results;
-                        //this.initShiftNotesList();
-                    },
-                    error: (oError) => {
-                        debugger;
-                    }
-                })
 
-            },
-
+            onSelectShiftnote: function(oEvent){
+                var oListItem = oEvent.getParameters().listItem;   
+                var oBc = oListItem.getBindingContext("local");
+                var oContext = oBc.getModel().getProperty(oBc.getPath());
+                
+                var shiftNoteid = oContext.ShiftNoteId;
+            },      
+                            
 		});
 	});
